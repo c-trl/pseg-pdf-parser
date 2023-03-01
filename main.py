@@ -26,10 +26,11 @@ def parse_line(target):
 
 def pdf_to_csv(pdf_filepath, data_filepath):
     
-    saved = {}
+    saved = {} # parsed data will go here
     
     reader = PdfReader(pdf_filepath)
     
+    # turning data into iterable lines. index is needed to refer to preceeding/following lines (eg. content following titles)
     for page in reader.pages:
         text = str(page.extract_text(0))
         lines = text.split('\n')
